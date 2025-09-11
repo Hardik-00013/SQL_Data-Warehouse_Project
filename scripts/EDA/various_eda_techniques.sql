@@ -1,4 +1,4 @@
--- Step 1: DATABASE EXPLORATION
+-- STEP 1: DATABASE EXPLORATION
 -- Explore all the objects in the database
 SELECT * FROM INFORMATION_SCHEMA.TABLES;
 
@@ -7,7 +7,7 @@ SELECT * FROM INFORMATION_SCHEMA.COLUMNS
 	WHERE TABLE_NAME = 'dim_customers'; -- See columns for a speciifc table
 
 
--- Step 2: DIMENSION EXPLORATION
+-- STEP 2: DIMENSION EXPLORATION
 -- Explore all the countries our customers come from
 SELECT DISTINCT country FROM gold.dim_customers;
 
@@ -20,7 +20,7 @@ SELECT DISTINCT
 FROM gold.dim_products
 	ORDER BY 1,2,3;-- Detailing even further (adding extra layers of details)
 
--- Step 3: DATE EXPLORATION
+-- STEP 3: DATE EXPLORATION
 -- Find the date of the first and the last order, how many years of sales are available
 SELECT
 	MIN(order_date) AS first_order_date,
@@ -37,7 +37,7 @@ SELECT
 	MAX(DATEDIFF(YEAR, birthdate, GETDATE())) AS oldest_customer_age
 FROM gold.dim_customers;
 
--- Step 4: MEASURE EXPLORATION
+-- STEP 4: MEASURE EXPLORATION
 -- Find the Total Sales
 SELECT 
 	SUM(sales_amount) AS Total_Sales
@@ -136,7 +136,7 @@ SELECT
 FROM gold.fact_sales;
 
 
--- Step 5: Magnitude Analysis
+-- STEP 5: Magnitude Analysis
 -- Report 1: Find total customers by countries
 SELECT
 	country,
@@ -207,7 +207,7 @@ GROUP BY gdc.country
 	ORDER BY Number_Of_Items_Sold
 OPTION (HASH JOIN);
 
--- Step 6: Ranking Analysis
+-- STEP 6: Ranking Analysis
 -- Report 1: Which 5 products generate the highest revenue?
 -- Can also do it for the best performing subcategories
 SELECT TOP 5
