@@ -20,9 +20,10 @@ Highlights:
 - average monthly revenue
 =====================================================
 */
-CREATE VIEW gold.report_products AS
+CREATE OR ALTER VIEW gold.report_products AS
 
 	SELECT
+		gdp.product_key,
 		gdp.product_name,
 		gdp.category,
 		gdp.subcategory,
@@ -44,5 +45,5 @@ CREATE VIEW gold.report_products AS
 	FROM gold.fact_sales AS gfs LEFT JOIN  gold.dim_products AS gdp
 		ON gfs.product_key = gdp.product_key
 	WHERE gfs.order_date IS NOT NULL
-		GROUP BY gdp.product_name, gdp.category, gdp.subcategory;
+		GROUP BY gdp.product_key, gdp.product_name, gdp.category, gdp.subcategory;
 
