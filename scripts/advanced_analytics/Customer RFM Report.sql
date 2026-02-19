@@ -68,6 +68,7 @@ FROM
 		CONCAT(gdc.fisrt_name, ' ', gdc.last_name) AS customer_name,
 		gdp.product_key,
 		gdp.product_name AS customer_fav_product,
+	    cfp.product_sale_percentage,
 		hvc.days_since_last_order,
 		aod.average_order_duration,
 		FLOOR(CAST(hvc.days_since_last_order - aod.average_order_duration AS FLOAT) / aod.average_order_duration * 100)
