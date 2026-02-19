@@ -3,7 +3,8 @@
    Days since their last order 
    Sort by percentage exceeded from their average_order_duration 
    High Value Customers: who have more than $4000 in combined purchases till date 
-   We can further calculate the %age of customers in each customer_health_status category*/ 
+   We can further calculate the %age of customers in each customer_health_status category
+   Find in which percentile these customers lie for even focussed targeting */ 
 
 -- recognizing the high value customers and days since their last order
 WITH high_value_customers AS
